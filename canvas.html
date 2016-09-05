@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas 画布</title>
+		<style type="text/css">
+			.wrap{
+				width: 200px;
+				height: 200px;
+				background: #eee;
+				position: relative;
+			}
+			.box{
+				position: absolute;
+				height: 200px;
+				width: 200px;
+				background: pink;
+				border-radius: 100px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<canvas id="cvs" width="200" height="200" style="background: #eee;"></canvas>
+		<script>
+			var cvs = document.getElementById('cvs')
+			var pen = cvs.getContext("2d");
+			pen.fillStyle = 'pink';
+			pen.arc(100,100,100,0,Math.PI*2,true);
+			pen.fill();
+		</script>
+		
+		
+		<svg style="width: 200px; height: 200px; background: #eee;">
+			<circle cx="100" cy="100" r="100" style="fill:pink"></circle>
+		</svg>
+		
+		
+		<div class="wrap">
+			<div class="box">
+			</div>
+		</div>
+	</body>
+</html>

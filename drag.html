@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>页面内图片的拖拽</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				background: #FFC0CB;
+				width: 800px;
+				height: 750px;
+				text-align: center;
+				padding-top: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		
+		<img src="../img/11.jpg" id="pic"/>
+		<script>
+			var img = document.querySelector('#pic');
+			img.ondragstart = function(e){
+				e.dataTransfer.setData('id','pic')
+			}
+			
+			var div = document.querySelector('#box');
+			div.ondrop = function(e){
+				e.stopPropagation(); //阻止冒泡
+				var id= e.dataTransfer.getData('id');
+				var img = document.querySelector('#' + id);
+				this.appendChild(img)
+			}
+		</script>
+	</body>
+</html>

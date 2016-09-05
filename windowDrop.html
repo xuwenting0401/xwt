@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>窗口外图片拖入</title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			html,body{
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			document.ondragenter =
+				document.ondragover =
+				document.ondrag = function(e) {
+					e.preventDefault();
+				}
+
+			document.body.ondrop = function(e) {
+				e.preventDefault();
+				var file = e.dataTransfer.files[0];
+				var fr = new FileReader();
+				fr.onload = function() {
+					var img = new Image;
+					img.src = fr.result;
+					document.body.appendChild(img);
+				}
+				fr.readAsDataURL(file)
+			}
+		</script>
+	</body>
+
+</html>
